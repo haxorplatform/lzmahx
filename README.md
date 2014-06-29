@@ -8,10 +8,12 @@ Usage is pretty much the same, with the addition of some `Base64` and `Uint8Arra
 ## Install
 
 * Run the command `haxelib install lzmahx`
-* Copy the sources `lib/bin/lzma.js` `lib/bin/lzma_worker.js` to your root folder (nodejs) or where the `<script>` can find them.
 * If your application is HTML:
+  * Copy the sources `lib/bin/lzma.js` `lib/bin/lzma_worker.js` where the page can find them.
   * For `Async` mode using `WebWorker` use this tag `<script src="lzma.js"></script>`
   * For `Sync` mode use this tag `<script src="lzma_worker.js"></script>`
+* If your application is NodeJS:
+  * Copy the sources `lib/bin/lzma.js` `lib/bin/lzma_worker.js` in the same folder as your `app.js`.
 
 ## Usage
 
@@ -35,7 +37,7 @@ LZMA.Compress64(d, mode, function(cr:String):Void
 
 //Also accepts string.
 var d_str : String = "somedata"; 
-LZMA.Compress(d, mode, function(cr:Array<Int>):Void {});
+LZMA.Compress(d_str, mode, function(cr:Array<Int>):Void {});
 ````
 
 ### Decompression
@@ -53,7 +55,7 @@ LZMA.Decompress(d,function(res:Uint8Array):Void
 }
 
 
-var d_str : String; //Compressed dat in Base64 format.
+var d_str : String; //Compressed data in Base64 format.
 LZMA.Decompress64(d_str,function(cr:Uint8Array):Void {});
 ````
 
